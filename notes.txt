@@ -1,0 +1,40 @@
+- Built a multicontainer application
+- We will build a fancy, way more complicated fibonacci sequence calculator.
+
+
+Request -> Nginx routing to React files for simple html or js files or to the Express Server if trying to access some backend API.
+
+React app communicates with Express Server
+The Express server is communicating with Redis and Postgres:
+- Redis is in memory data storage and is commonly used for cached values.
+(The calculated values)
+- Postgres is database. (values I have seen)
+
+- Worker (separate node.js app) watches redis for any new indicies. Pulls each each new indice, caluculates new value, then puts it back into redis.
+
+- Dockerfiles
+
+cd client
+docker build -f Dockerfile.dev .
+docker run -it 1fd34214c883
+
+cd ../server
+docker build -f Dockerfile.dev .
+
+cd ../worker
+docker build -f Dockerfile.dev .
+
+- Docker Compose files 
+
+Multi Container Setup 
+- Steps
+    * Push code to GitHub
+    * Travis automatically pulls repo 
+    * Travis  builds a test image, tests code 
+    * Travis builds prod images 
+    * Travis pushes built prod images to Docker Hub 
+    * Travis pushes project to AWS EB 
+    * EB pulls images from Docker Hub, deploys
+
+
+
